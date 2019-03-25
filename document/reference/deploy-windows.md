@@ -25,17 +25,19 @@
 
 - 下载地址：https://github.com/MicrosoftArchive/redis/releases
 - 下载后按提示进行安装
+- 启动redis:redis-server.exe redis.windows.conf
 
 ## elasticsearch
 
-- 下载地址：https://www.elastic.co/downloads/past-releases/elasticsearch-2-4-6
+- 下载地址：https://www.elastic.co/downloads/past-releases/elasticsearch-6-2-2
 - 下载.zip文件，解压到指定目录
-- 安装head插件，在elasticsearch-2.4.6\bin目录下执行以下命令：plugin install mobz/elasticsearch-head
-- 安装中文分词插件：https://github.com/medcl/elasticsearch-analysis-ik
-- 下载地址：https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v1.10.6/elasticsearch-analysis-ik-1.10.6.zip
-- 解压并拷贝到elasticsearch-2.4.6\plugins目录下
-- 启动elasticsearch:运行elasticsearch-2.4.6\bin\elasticsearch.bat
+- 安装head插件，具体参考：https://github.com/mobz/elasticsearch-head
+- 中文分词插件地址：https://github.com/medcl/elasticsearch-analysis-ik
+- 安装中文分词插件，在elasticsearch-6.2.2\bin目录下执行以下命令：
+elasticsearch-plugin install https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v6.2.2/elasticsearch-analysis-ik-6.2.2.zip
+- 启动elasticsearch:运行elasticsearch-6.2.2\bin\elasticsearch.bat
 - 打开该地址测试是否安装成功：http://localhost:9200/_plugin/head/
+- 不使用head插件的可以使用kibana，请下载6.2.2版本，具体参考：https://www.elastic.co/downloads/kibana
 
 ## mongodb
 
@@ -73,12 +75,18 @@
     ![rabbitmq_install_3.png](https://github.com/macrozheng/mall/blob/master/document/resource/rabbitmq_install_3.png)
 - 给mall用户配置范围该virtual host的权限
     ![rabbitmq_install_4.png](https://github.com/macrozheng/mall/blob/master/document/resource/rabbitmq_install_4.png)
+    
+## OSS
+
+- 该项目文件上传采用OSS，需要自行注册OSS账号并配置
+- 首先将mall-admin\src\main\resources\application.properties文件中以aliyun.oss.开头的配置改为你自己的配置
+- OSS上传文件需要配置跨域资源共享(CORS)规则，参考文档：https://help.aliyun.com/document_detail/31928.html
+- 上传方式采用服务端签名后直传的形式，参考文档：https://help.aliyun.com/document_detail/31926.html
 
 ## mall-admin
 
 - 启动项目：直接运行com.macro.mall.MallAdminApplication的main方法即可
 - 接口文档地址：http://localhost:8080/swagger-ui.html
-- 文件上传需要配置OSS:将mall-admin\src\main\resources\application.properties文件中以aliyun.oss.开头的配置改为你自己的配置
 
 ## mall-search
 
